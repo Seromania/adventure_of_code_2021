@@ -34,10 +34,9 @@ func readDayOneInput(filePath string) (result []int) {
 func DayOnePartOne() int {
 	input := readDayOneInput("day_one/input_1-1.txt")
 
-	index := 1
 	amountOfMeasurements := 0
 
-	for ; index < len(input); index++ {
+	for index := 1; index < len(input); index++ {
 		if input[index] > input[index-1] {
 			amountOfMeasurements++
 		}
