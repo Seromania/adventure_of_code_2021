@@ -23,13 +23,17 @@ func iteratePartTwo(pos1 Position, pos2 Position, positions map[Position]int) ma
 	iterateMode := iterateModeSameX
 	start := -1
 	end := -1
+	firstIterator := 1
+
+	secondStart := -1
+	secondEnd := -1
+	secondIterator := 1
 
 	if pos1.x == pos2.x {
 		iterateMode = iterateModeSameX
 	} else if pos1.y == pos2.y {
 		iterateMode = iterateModeSameY
-	} else if absInt(pos1.x) == absInt(pos2.x) &&
-		absInt(pos1.y) == absInt(pos2.y) {
+	} else if absInt(pos1.x-pos2.x) == absInt(pos1.y-pos2.y) {
 		iterateMode = iterateModeDiagonal
 	} else {
 		return positions
@@ -39,27 +43,62 @@ func iteratePartTwo(pos1 Position, pos2 Position, positions map[Position]int) ma
 	case iterateModeSameX:
 		start = minInt(pos1.y, pos2.y)
 		end = maxInt(pos1.y, pos2.y)
+		firstIterator = 1
 		break
 
 	case iterateModeSameY:
 		start = minInt(pos1.x, pos2.x)
 		end = maxInt(pos1.x, pos2.x)
+		firstIterator = 1
+		break
+
+	case iterateModeDiagonal:
+		start = pos1.x
+		end = pos2.x
+		secondStart = pos1.y
+		secondEnd = pos2.y
+
+		if start > end {
+			firstIterator = -1
+		} else {
+			firstIterator = 1
+		}
+
+		if secondStart > secondEnd {
+			secondIterator = -1
+		} else {
+			secondIterator = 1
+		}
+
 		break
 	}
 
-	for i := start; i <= end; i++ {
+	stepEnd := absInt(end - start)
+
+	for i := 0; i <= stepEnd; i++ {
 		var position Position
 
-		if iterateMode {
+		switch iterateMode {
+		case iterateModeSameX:
 			position = Position{
 				x: pos1.x,
-				y: i,
+				y: start,
 			}
-		} else {
+			break
+
+		case iterateModeSameY:
 			position = Position{
-				x: i,
+				x: start,
 				y: pos1.y,
 			}
+			break
+
+		case iterateModeDiagonal:
+			position = Position{
+				x: start,
+				y: secondStart,
+			}
+			break
 		}
 
 		if val, ok := positions[position]; ok {
@@ -67,7 +106,22 @@ func iteratePartTwo(pos1 Position, pos2 Position, positions map[Position]int) ma
 		} else {
 			positions[position] = 1
 		}
+
+		start += firstIterator
+		secondStart += secondIterator
 	}
 
 	return positions
+}
+
+func DoDayFivePartTwo() int {
+	positionPairs := readInput("day_five/input_5.txt")
+
+	lineMap := make(map[Position]int)
+
+	for _, pair := range positionPairs {
+		lineMap = iteratePartTwo(pair.pos1, pair.pos2, lineMap)
+	}
+
+	return getAmountOfOverlaps(lineMap)
 }

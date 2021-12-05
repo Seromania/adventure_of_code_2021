@@ -10,19 +10,20 @@ import (
 )
 
 func main() {
-	//runDayOnePartOne()
-	//runDayOnePartTwo()
-	//
-	//runDayTwoPartOne()
-	//runDayTwoPartTwo()
-	//
-	//runDayThreePartOne()
-	//runDayThreePartTwo()
-	//
-	//runDayFourPartOne()
-	//runDayFourPartTwo()
+	runDayOnePartOne()
+	runDayOnePartTwo()
+
+	runDayTwoPartOne()
+	runDayTwoPartTwo()
+
+	runDayThreePartOne()
+	runDayThreePartTwo()
+
+	runDayFourPartOne()
+	runDayFourPartTwo()
 
 	runDayFivePartOne()
+	runDayFivePartTwo()
 }
 
 func runDayOnePartOne() {
@@ -67,5 +68,10 @@ func runDayFourPartTwo() {
 
 func runDayFivePartOne() {
 	result := day_five.DoDayFivePartOne()
-	fmt.Printf("Result for 5-1: %d", result)
+	fmt.Printf("Result for 5-1: %d\n", result)
+}
+
+func runDayFivePartTwo() {
+	result := day_five.DoDayFivePartTwo()
+	fmt.Printf("Result for 5-2: %d\n", result)
 }
