@@ -25,7 +25,7 @@ func DoDayTwoPartTwo() int {
 	aim := 0
 
 	commands := readInput("day_two/input_2-1.txt")
-	//commands := readInput("day_two/input_test.txt")
+	//commands := readInput("day_two/input_test.txt.txt")
 
 	for _, command := range commands {
 		horizontalPosition, depth, aim = command.HandlePartTwo(horizontalPosition, depth, aim)
