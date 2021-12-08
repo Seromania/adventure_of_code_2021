@@ -135,9 +135,6 @@ func getSegmentByDigit(segments []string, digits []string) (number int) {
 		if len(digit) == 6 {
 			numberStr += getZeroSixOrNine(segmentCode, digit)
 		}
-
-		runeArray := []rune(digit)
-		sort.Sort(sortRuneString(runeArray))
 	}
 
 	if numberStr == "" {
