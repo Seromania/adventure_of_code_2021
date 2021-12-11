@@ -2,6 +2,7 @@ package main
 
 import (
 	"adventofcode_2021/day_eight"
+	"adventofcode_2021/day_eleven"
 	"adventofcode_2021/day_five"
 	"adventofcode_2021/day_four"
 	"adventofcode_2021/day_nine"
@@ -12,6 +13,7 @@ import (
 	"adventofcode_2021/day_three"
 	"adventofcode_2021/day_two"
 	"fmt"
+	"time"
 )
 
 func main() {
@@ -44,6 +46,9 @@ func main() {
 
 	runDayTenPartOne()
 	runDayTenPartTwo()
+
+	runDayElevenPartOne()
+	runDayElevenPartTwo()
 }
 
 func runDayOnePartOne() {
@@ -142,6 +147,17 @@ func runDayTenPartOne() {
 }
 
 func runDayTenPartTwo() {
+	start := time.Now()
 	result := day_ten.DoDayTenPartTwo()
-	fmt.Printf("Result for 10-2: %d\n", result)
+	fmt.Printf("Result for 10-2: %d - in %s\n", result, time.Since(start))
+}
+
+func runDayElevenPartOne() {
+	result := day_eleven.DoDayElevenPartOne()
+	fmt.Printf("Result for 11-1: %d\n", result)
+}
+
+func runDayElevenPartTwo() {
+	result := day_eleven.DoDayElevenPartTwo()
+	fmt.Printf("Result for 11-2: %d\n", result)
 }
