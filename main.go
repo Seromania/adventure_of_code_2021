@@ -11,6 +11,7 @@ import (
 	"adventofcode_2021/day_six"
 	"adventofcode_2021/day_ten"
 	"adventofcode_2021/day_three"
+	"adventofcode_2021/day_twelve"
 	"adventofcode_2021/day_two"
 	"fmt"
 	"time"
@@ -49,6 +50,9 @@ func main() {
 
 	runDayElevenPartOne()
 	runDayElevenPartTwo()
+
+	runDayTwelvePartOne()
+	runDayTwelvePartTwo()
 }
 
 func runDayOnePartOne() {
@@ -160,4 +164,14 @@ func runDayElevenPartOne() {
 func runDayElevenPartTwo() {
 	result := day_eleven.DoDayElevenPartTwo()
 	fmt.Printf("Result for 11-2: %d\n", result)
+}
+
+func runDayTwelvePartOne() {
+	result := day_twelve.DoDayTwelvePartOne()
+	fmt.Printf("Result for 12-1: %d\n", result)
+}
+
+func runDayTwelvePartTwo() {
+	result := day_twelve.DoDayTwelvePartTwo()
+	fmt.Printf("Result for 12-2: %d\n", result)
 }
