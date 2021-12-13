@@ -169,7 +169,5 @@ func DoDayTwelvePartOne() int {
 	caveMap := readInput("day_twelve/input_12.txt")
 
 	caveMap.findPath("start", CavePath{})
-	//caveMap.printPaths()
-	caveMap.printPathsWithEnd()
 	return caveMap.getAmountOfPathsWithEnd()
 }
